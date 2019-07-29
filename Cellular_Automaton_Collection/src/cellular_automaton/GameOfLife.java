@@ -26,10 +26,10 @@ public class GameOfLife extends cellular_automaton {
 		output = new ArrayList<Cell>();
 		state  = new ArrayList<Cell>();
 		
-		for (int y = 0; y < h / CELL_WIDTH; y++) {
-			for (int x = 0; x < w / CELL_WIDTH; x++) {
-				output.add(new Cell(x * CELL_WIDTH, y * CELL_WIDTH));
-				state .add(new Cell(x * CELL_WIDTH, y * CELL_WIDTH));
+		for (int y = 0; y < h / CELL_SIZE; y++) {
+			for (int x = 0; x < w / CELL_SIZE; x++) {
+				output.add(new Cell(x * CELL_SIZE, y * CELL_SIZE));
+				state .add(new Cell(x * CELL_SIZE, y * CELL_SIZE));
 			}
 		}
 		
@@ -85,7 +85,7 @@ public class GameOfLife extends cellular_automaton {
 		for (var cell : output) {
 			if (cell.state == CELL_STATE.ALIVE) {
 				g2d.setColor(Color.WHITE);
-				g2d.fillRect(cell.x, cell.y, CELL_WIDTH, CELL_WIDTH);
+				g2d.fillRect(cell.x, cell.y, CELL_SIZE, CELL_SIZE);
 			}
 		}
 	}
@@ -93,8 +93,8 @@ public class GameOfLife extends cellular_automaton {
 	@Override
 	void Logic() {
 		// get neighbours
-		for (int y = 0; y < DISPLAY.getScreenHeight() / CELL_WIDTH; y++) {
-			for (int x = 0; x < DISPLAY.getScreenWidth() / CELL_WIDTH; x++) {
+		for (int y = 0; y < DISPLAY.getScreenHeight() / CELL_SIZE; y++) {
+			for (int x = 0; x < DISPLAY.getScreenWidth() / CELL_SIZE; x++) {
 				int neighbours = CalculateNeighbours(x, y);
 				
 				// apply game of life rules

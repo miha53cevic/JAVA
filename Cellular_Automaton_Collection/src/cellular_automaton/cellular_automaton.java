@@ -4,19 +4,19 @@ import javax.swing.JPanel;
 
 import display_manager.*;
 
-abstract class cellular_automaton extends JPanel {
+public abstract class cellular_automaton extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	public cellular_automaton(int cell_width) {
-		CELL_WIDTH = cell_width;
+		CELL_SIZE = cell_width;
 	}
 	
 	abstract void Logic();
 	
 	protected int CalculateNeighbours(int x, int y) {
 		// cell count in x and y axis
-		int w = DISPLAY.getScreenWidth()  / CELL_WIDTH;
-		int h = DISPLAY.getScreenHeight() / CELL_WIDTH;
+		int w = DISPLAY.getScreenWidth()  / CELL_SIZE;
+		int h = DISPLAY.getScreenHeight() / CELL_SIZE;
 		
 		int neighbours = 0;
 		
@@ -36,10 +36,21 @@ abstract class cellular_automaton extends JPanel {
 	abstract Boolean isAlive(int x, int y);
 	
 	protected int CELL_INDEX(int x, int y) {
-		int w = DISPLAY.getScreenWidth() / CELL_WIDTH; 
+		int w = DISPLAY.getScreenWidth() / CELL_SIZE; 
 		return (y * w) + x;
 	}
 	
-	protected int CELL_WIDTH;
+	public void Refresh(double mili) {
+		repaint();
+		Logic();
+		
+		try {
+			Thread.sleep((long)mili);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	protected int CELL_SIZE;
 	protected Display DISPLAY;
 }
