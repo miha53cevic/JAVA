@@ -6,6 +6,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
 import Utilities.Util;
 import display_manager.Display;
 
@@ -16,7 +18,7 @@ public class GameOfLife extends cellular_automaton {
 		// set quad width
 		super(8);
 		
-		DISPLAY = new Display(w, h, "Game Of Life");
+		DISPLAY = new Display(w, h, "Game Of Life", JFrame.DISPOSE_ON_CLOSE);
 		
 		this.setPreferredSize(new Dimension(w, h));
 		DISPLAY.getFrame().getContentPane().add(this);

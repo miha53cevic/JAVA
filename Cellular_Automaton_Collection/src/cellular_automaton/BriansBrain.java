@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
 import Utilities.Util;
 import display_manager.Display;
 
@@ -15,7 +17,7 @@ public class BriansBrain extends cellular_automaton {
 		super(4);
 		
 		// setup display
-		DISPLAY = new Display(w, h, "BriansBrain");
+		DISPLAY = new Display(w, h, "BriansBrain", JFrame.DISPOSE_ON_CLOSE);
 		DISPLAY.getFrame().getContentPane().add(this);
 		DISPLAY.getFrame().setPreferredSize(new Dimension(w, h));
 		DISPLAY.getFrame().pack();

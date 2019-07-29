@@ -4,10 +4,10 @@ import javax.swing.JFrame;
 
 public class Display {
 
-	public Display(int WIDTH, int HEIGHT, String TITLE) {
+	public Display(int WIDTH, int HEIGHT, String TITLE, int CloseOperation) {
 		m_frame = new JFrame(TITLE);
 		m_frame.setSize(WIDTH, HEIGHT);
-		m_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		m_frame.setDefaultCloseOperation(CloseOperation);
 		m_frame.setVisible(true);
 		
 		m_nScreenWidth	= WIDTH;
